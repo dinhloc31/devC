@@ -1,0 +1,10 @@
+*.exe
+*.o
+*.out
+*.a
+*.so
+*.dll
+*.log
+build/
+.vscode/
+*.swp
