@@ -6,5 +6,6 @@
 *.dll
 *.log
 build/
-.vscode/
+*.vscode/
 *.swp
+*.DS_Store
