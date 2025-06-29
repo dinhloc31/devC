@@ -21,6 +21,8 @@ The current system does not comply with the Open/Closed Principle (OCP) of softw
 
 ---
 ## 2. Project structure
+
+```
 022factoryPattern/
 │
 ├── Makefile                # Build configuration
@@ -38,6 +40,7 @@ The current system does not comply with the Open/Closed Principle (OCP) of softw
 │   ├── sensor.c            # Factory function and sensor handling
 │   └── tempSensor.c        # Implementation for temperature 
 
+```
 ---
 
 ## 3. 🔧 Build & Run
