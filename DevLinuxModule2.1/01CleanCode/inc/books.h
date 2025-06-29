@@ -29,6 +29,6 @@ void searchBook(books* bookList, char* bookSearchTitle);
 books* findBookById(books* bookList, char targetBookID[BOOK_ID_LENGHT]);
 void showBookList(books* bookList);
 void showBookWithStatus(books* bookList, bool bookStatus);
-
+int checkDuplicateBook(books* list, char* bookID) ;
 
 #endif

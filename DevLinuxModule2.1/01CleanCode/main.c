@@ -1,9 +1,15 @@
 
-#include "books.h"
-#include "students.h"
+#include "inc/books.h"
+#include "inc/students.h"
 
 books* bookList = NULL;
 students* studentList = NULL;
+
+void showMenu();
+void addBook(books **bookList);
+void searchBookwithTitle(books *bookList);
+void borrowBook(students** studentList, books* bookList);
+void addStudent(students** studentList);
 
 int main()
 {
@@ -136,7 +142,7 @@ void borrowBook(students** studentList, books* bookList)
     addBookToStudentById(studentList, bookList, inputBookID, inputStudentId);
 }
 
-addStudent(students** studentList)
+void addStudent(students** studentList)
 {
     char newStudentName[MAX_NAME_LENGTH];
     int newStudentID;
