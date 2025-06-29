@@ -1,5 +1,5 @@
 
-#include "sensor.h"
+#include "inc/sensor.h"
 #include <stdio.h>
 
 int main()
