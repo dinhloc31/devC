@@ -1,12 +1,3 @@
-/* Requirements*/
-/*
-Bài tập 3: Trong quá trình phát triển phần mềm, bạn thường phải làm việc với các đối tượng phức tạp có nhiều thuộc tính và thành phần. Ví dụ, khi cấu hình giao tiếp UART, bạn cần thiết lập các tham số như:
-Baud rate,
-Parity,
-Stop bits,
-Data bits.
-
-*/
 #include "uart.h"
 void uartShowConfig(uartConfig uartConfig);
 
