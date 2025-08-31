@@ -10,13 +10,14 @@ void causeStackOverflow(int depth)
 
 void causeMemoryLeakAndOutOfMemory() 
 {
-    size_t block_size = 1024*1024; 
+    size_t block_size = 1024*1024; // test 1MB per time
     size_t count = 0;
 
     while (1) 
     {
         void *ptr = malloc(block_size);
-        if (!ptr) {
+        if (!ptr) 
+        {
             fprintf(stderr, "Out of memory after %zu MB allocated.\n", count);
             exit(EXIT_FAILURE);
         }
