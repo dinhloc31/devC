@@ -16,15 +16,18 @@ typedef enum
     LOG_DEBUG
 } logLevel;
 
-// Initialize logger
-int loggerInit(logLevel level, const char *file_path);
-void loggerSetLevel(logLevel level);
-void loggerClose();
+typedef struct Logger Logger;
 
-// Internal log function
-void loggerLog(logLevel level, const char *file, int line, const char *fmt, ...);
+struct Logger 
+{
+    logLevel level;
+    FILE *logFile;
+    int (*init)(Logger *selflogger, logLevel logLevel, const char *filePath);
+    void (*setLevel)(Logger *selflogger, logLevel logLevel);
+    void (*close)(Logger *selflogger);
+    void (*log)(Logger *selflogger, logLevel logLevel, const char *formatString, ...);
+};
 
-// User-friendly macro
-#define logMessage(level, ...) loggerLog(level, __FILE__, __LINE__, __VA_ARGS__)
+void loggerInitStruct(Logger *logger);
 
-#endif 
+#endif
