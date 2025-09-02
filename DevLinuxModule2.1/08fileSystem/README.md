@@ -20,7 +20,7 @@ This module provides a command-line tool to check and display **metadata** of fi
 
 ## Output Format
 
-```
+```bash
 ==========================================
        FILE METADATA INFORMATION
 ==========================================
