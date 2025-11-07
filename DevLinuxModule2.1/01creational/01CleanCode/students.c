@@ -30,7 +30,7 @@ void removeStudentFromList(students **studentList, int StudentIdRemove)
     {
         *studentList = currentStudent->nextStudent;
         free(currentStudent);
-        printf("Student with ID %s removed from the list.\n", StudentIdRemove);
+        printf("Student with ID %d removed from the list.\n", StudentIdRemove);
         return;
     }
 
@@ -42,14 +42,14 @@ void removeStudentFromList(students **studentList, int StudentIdRemove)
     }
     if (currentStudent == NULL)
     {
-        printf("Student ID %s not found in the list.\n", StudentIdRemove);
+        printf("Student ID %d not found in the list.\n", StudentIdRemove);
         return;
     }
 
     /*Remove Book*/
     previousStudent->nextStudent = currentStudent->nextStudent;
     free(currentStudent);
-    printf("Student with ID %s removed from the list.\n", StudentIdRemove);
+    printf("Student with ID %d removed from the list.\n", StudentIdRemove);
 }
 
 void addBookToStudentById(students** studentList, books** bookList, char bookID[BOOK_ID_LENGHT], int targetStudentID)

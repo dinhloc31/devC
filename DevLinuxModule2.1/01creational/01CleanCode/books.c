@@ -146,14 +146,16 @@ void showBookWithStatus(books *bookList, bool bookStatus)
     }
     
     printf("==========AVAILABLE BOOK==========\n");
-    while (bookList!=NULL && bookList->bookStatus == bookStatus)
+    while (bookList!=NULL)
     {
-        printf("  Title: %s\n", bookList->bookTitle);
-        printf("  Author : %s\n", bookList->bookAuthor);
-        printf("  BookID : %s\n", bookList->bookID);
-        printf("  Book Status : %s\n", bookList->bookStatus == BOOK_AVAILABLE ? "Available" : "Borrowed");
-        printf("-----------------------------------\n");
-
+        if (bookList->bookStatus == bookStatus)
+        {
+            printf("  Title: %s\n", bookList->bookTitle);
+            printf("  Author : %s\n", bookList->bookAuthor);
+            printf("  BookID : %s\n", bookList->bookID);
+            printf("  Book Status : %s\n", bookList->bookStatus == BOOK_AVAILABLE ? "Available" : "Borrowed");
+            printf("-----------------------------------\n");
+        }
         bookList = bookList->nextBook;
     }
 }

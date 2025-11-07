@@ -92,24 +92,26 @@ void readFile(const char* path, long long fileSize, int isRegular)
         return;
     }
 
-    int character;
-    int bytesRead = 0;
+    char buffer[1024];
+    size_t bytesToRead = (fileSize < 1024) ? fileSize : 1024;
+    size_t bytesRead = fread(buffer, 1, bytesToRead, file);
+    
     int lineNumber = 1;
-
     printf("%3d: ", lineNumber);
 
-    while ((character = fgetc(file)) != EOF && bytesRead < 1024) 
+    for (size_t i = 0; i < bytesRead; i++) 
     {
+        char character = buffer[i];
         if (character == '\n') 
         {
             printf("\n");
             lineNumber++;
-            if (bytesRead + 1 < 1024 && !feof(file)) // set default 1kb limit, we need to check feof to avoid printing extra line number at end of file
+            if (i + 1 < bytesRead) 
             {
                 printf("%3d: ", lineNumber);
             }
         } 
-        else if (character >= 32 && character <= 126) //Character can print, from 32 to 126
+        else if (character >= 32 && character <= 126) 
         {
             printf("%c", character);
         } 
@@ -121,10 +123,9 @@ void readFile(const char* path, long long fileSize, int isRegular)
         {
             printf(".");
         }
-        bytesRead++;
     }
 
-    if (character != '\n' && bytesRead > 0) {
+    if (bytesRead > 0 && buffer[bytesRead - 1] != '\n') {
         printf("\n");
     }
 

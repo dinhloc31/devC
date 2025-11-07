@@ -50,9 +50,10 @@ void ledFill(uint8_t red, uint8_t green, uint8_t blue)
         return;
     }
 
+	uint32_t color = ((uint32_t)red << 16) | ((uint32_t)green << 8) | (uint32_t)blue;
 	for (size_t i = 0; i < ledPixelCount; i++) 
     {
-		ledBuffer[i] = ((uint32_t)red << 16) | ((uint32_t)green << 8) | (uint32_t)blue;
+		ledBuffer[i] = color;
 	}
 }
 
@@ -64,10 +65,7 @@ void ledClear()
         return;
     }
 
-	for (size_t i = 0; i < ledPixelCount; i++) 
-    {
-		ledBuffer[i] = 0;
-	}
+	memset(ledBuffer, 0, ledPixelCount * sizeof(uint32_t));
 }
 
 const uint32_t* ledGetBuffer()

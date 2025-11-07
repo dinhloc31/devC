@@ -297,15 +297,23 @@ void displayCpuInfo(const CPUInfo* cpuInfo) {
 
 void displayMemoryInfo(const MemoryInfo* memoryInfo) {
     printf("\n========== MEMORY INFORMATION ==========\n");
-    printf("Total RAM: %lu MB\n", memoryInfo->totalMemory / 1024);
+    unsigned long totalMemoryMB = memoryInfo->totalMemory / 1024;
+    unsigned long usedMemoryMB = memoryInfo->usedMemory / 1024;
+    unsigned long freeMemoryMB = memoryInfo->freeMemory / 1024;
+    unsigned long cacheMemoryMB = memoryInfo->cacheMemory / 1024;
+    unsigned long bufferMemoryMB = memoryInfo->bufferMemory / 1024;
+    unsigned long swapTotalMB = memoryInfo->swapTotal / 1024;
+    unsigned long swapUsedMB = memoryInfo->swapUsed / 1024;
+    
+    printf("Total RAM: %lu MB\n", totalMemoryMB);
     printf("Used RAM: %lu MB (%.1f%%)\n", 
-           memoryInfo->usedMemory / 1024,
+           usedMemoryMB,
            (float)memoryInfo->usedMemory / memoryInfo->totalMemory * 100);
-    printf("Free RAM: %lu MB\n", memoryInfo->freeMemory / 1024);
-    printf("Cache: %lu MB\n", memoryInfo->cacheMemory / 1024);
-    printf("Buffers: %lu MB\n", memoryInfo->bufferMemory / 1024);
-    printf("Swap Total: %lu MB\n", memoryInfo->swapTotal / 1024);
-    printf("Swap Used: %lu MB\n", memoryInfo->swapUsed / 1024);
+    printf("Free RAM: %lu MB\n", freeMemoryMB);
+    printf("Cache: %lu MB\n", cacheMemoryMB);
+    printf("Buffers: %lu MB\n", bufferMemoryMB);
+    printf("Swap Total: %lu MB\n", swapTotalMB);
+    printf("Swap Used: %lu MB\n", swapUsedMB);
     
     printf("Top Memory Processes:\n");
     for (int i = 0; i < 5; i++) {
