@@ -10,3 +10,4 @@ build/
 *.swp
 *.DS_Store
 main
+system_monitor
